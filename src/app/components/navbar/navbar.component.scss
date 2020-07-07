@@ -1,5 +1,8 @@
+$navbarBgCol: #333;
+$navbarBgColOnHover: #565656;
+
 .navbar {
-  background-color: #333;
+  background-color: $navbarBgCol;
   min-height: 45px;
 }
 .navbar nav #menu {
@@ -28,7 +31,7 @@
   height: 50px;
 }
 .navbar nav ul li:hover {
-  background-color: #565656;
+  background-color: $navbarBgColOnHover;
 }
 .navbar nav ul a {
   text-decoration: none;
