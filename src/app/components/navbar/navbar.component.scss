@@ -4,43 +4,51 @@ $navbarBgColOnHover: #565656;
 .navbar {
   background-color: $navbarBgCol;
   min-height: 45px;
+
+  nav #menu {
+    display: none;
+  }
+  nav label {
+    height: 45px;
+    cursor: pointer;
+    background: url(../../../assets/burger.png) no-repeat 50% 80%;
+    background-size: 65%;
+    padding: 0 0 16px 0;
+    color: transparent;
+  }
+  nav label::selection {
+    color: transparent;
+  }
+  nav ul {
+    list-style-type: none;
+    padding: 20px 0 0 0;
+    margin: 0;
+    line-height: 50px;
+  }
+  nav ul li {
+    cursor: pointer;
+    text-align: center;
+    height: 50px;
+    &:hover {
+      background-color: $navbarBgColOnHover;
+    }
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    display: block;
+    color: #fff;
+  }
+
+  nav ul li.active a {
+    color: #c21f1f;
+  }
+  
+  nav input:not(:checked) ~ .navbar-main {
+    display: none;
+  }
 }
-.navbar nav #menu {
-  display: none;
-}
-.navbar nav label {
-  height: 45px;
-  cursor: pointer;
-  background: url(../../../assets/burger.png) no-repeat 50% 80%;
-  background-size: 65%;
-  padding: 0 0 16px 0;
-  color: transparent;
-}
-.navbar nav label::selection {
-  color: transparent;
-}
-.navbar nav ul {
-  list-style-type: none;
-  padding: 20px 0 0 0;
-  margin: 0;
-  line-height: 50px;
-}
-.navbar nav ul li {
-  cursor: pointer;
-  text-align: center;
-  height: 50px;
-}
-.navbar nav ul li:hover {
-  background-color: $navbarBgColOnHover;
-}
-.navbar nav ul a {
-  text-decoration: none;
-  display: block;
-  color: #fff;
-}
-.navbar nav input:not(:checked) ~ .navbar-main {
-  display: none;
-}
+
 @media screen and (min-width: 768px) {
   .navbar-checkbox, .navbar-label {
     display: none;
