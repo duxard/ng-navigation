@@ -7,8 +7,9 @@ import { FormsTrainingComponent } from './components/forms-training/forms-traini
 import { PostsComponent } from './components/posts/posts.component';
 import { PostComponent } from './components/post/post.component';
 import { AboutComponent } from './components/about/about.component';
-import {AboutExtraComponent} from './components/about-extra/about-extra.component';
-import {AuthGuard} from './guards/auth.guard';
+import { AboutExtraComponent } from './components/about-extra/about-extra.component';
+import { AuthGuard } from './guards/auth.guard';
+import {PostResolver} from './resolvers/post.resolver';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,8 +17,14 @@ const routes: Routes = [
   { path: 'todos', component: TodoListComponent },
   { path: 'forms', component: FormsTrainingComponent },
   { path: 'posts', component: PostsComponent, canActivate: [AuthGuard] },
-  { path: 'posts/:id', component: PostComponent },
-  { path: 'about', component: AboutComponent, children: [
+  {
+    path: 'posts/:id',
+    component: PostComponent,
+    resolve: {
+      post: PostResolver
+    }
+  },
+  { path: 'about', component: AboutComponent, canActivateChild: [AuthGuard], children: [
       {path: 'extra', component: AboutExtraComponent}
     ]},
   { path: '**', component: PageNotFoundComponent }
